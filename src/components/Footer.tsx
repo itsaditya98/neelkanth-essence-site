@@ -67,22 +67,21 @@ const Footer = () => {
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-accent-light mt-1 flex-shrink-0" />
                 <div className="text-white/80 text-sm">
-                  Industrial Area, Sector 12<br />
-                  Construction Materials Hub<br />
-                  City, State - 123456
+                  0 Main Noida Dadri Road Near Sutyana Bus Stop,<br />
+                  Village Habibpur Greater Noida Gautam Buddha Nagar,<br />
+                  Uttar Pradesh, India - 201306
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-accent-light flex-shrink-0" />
                 <div className="text-white/80 text-sm">
-                  +91 98765 43210<br />
-                  +91 87654 32109
+                  +91 1234567890
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-accent-light flex-shrink-0" />
                 <div className="text-white/80 text-sm">
-                  info@neelkanthtraders.com
+                  contact@neelkanthtraders.in
                 </div>
               </div>
             </div>
@@ -103,7 +102,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="border-t border-white/20 mt-8 pt-8 text-center text-white/60">
-          <p>&copy; 2024 Neel Kanth Traders. All rights reserved. | Designed with inspiration from the sacred Neel Kanth bird.</p>
+          <p>&copy; 2024 Neel Kanth Traders. All rights reserved. | Powered by nestrix.</p>
         </div>
       </div>
     </footer>

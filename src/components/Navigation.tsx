@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import neelKanthBird from "@/assets/neel-kanth-bird.png";
+import neelKanthBird from "@/assets/nkt-logo.svg";
 import { Menu, X } from "lucide-react";
 
 const Navigation = () => {
@@ -38,14 +38,13 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <img 
+             <img 
               src={neelKanthBird} 
               alt="Neel Kanth Traders" 
-              className="w-10 h-10 object-cover rounded-full"
+              className="w-12 h-12 object-cover rounded-full"
             />
             <div>
-              <div className="font-bold text-lg text-foreground">Neel Kanth</div>
-              <div className="text-xs text-primary font-medium">Traders</div>
+              <div className="font-bold text-lg text-foreground">Neel Kanth Traders</div>
             </div>
           </div>
 

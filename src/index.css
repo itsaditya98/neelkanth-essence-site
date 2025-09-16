@@ -151,3 +151,7 @@ All colors MUST be HSL.
     @apply py-20 px-4;
   }
 }
+
+body, html {
+  overflow-x: hidden;
+}

@@ -65,9 +65,9 @@ const ContactSection = () => {
                 <div className="text-white">
                   <h4 className="font-semibold mb-1">Address</h4>
                   <p className="text-primary-foreground/80">
-                    Industrial Area, Sector 12<br />
-                    Construction Materials Hub<br />
-                    City, State - 123456
+                    0 Main Noida Dadri Road Near Sutyana Bus Stop,<br />
+                    Village Habibpur Greater Noida Gautam Buddha Nagar,<br />
+                    Uttar Pradesh, India - 201306
                   </p>
                 </div>
               </div>
@@ -79,8 +79,7 @@ const ContactSection = () => {
                 <div className="text-white">
                   <h4 className="font-semibold mb-1">Phone Numbers</h4>
                   <p className="text-primary-foreground/80">
-                    +91 98765 43210<br />
-                    +91 87654 32109
+                    +91 1234567890
                   </p>
                 </div>
               </div>
@@ -92,8 +91,7 @@ const ContactSection = () => {
                 <div className="text-white">
                   <h4 className="font-semibold mb-1">Email</h4>
                   <p className="text-primary-foreground/80">
-                    info@neelkanthtraders.com<br />
-                    sales@neelkanthtraders.com
+                    contact@neelkanthtraders.in
                   </p>
                 </div>
               </div>
