@@ -155,3 +155,16 @@ All colors MUST be HSL.
 body, html {
   overflow-x: hidden;
 }
+
+/* Add this CSS block to your main/global CSS file */
+.hide-scrollbar-css {
+  /* For IE and Edge */
+  -ms-overflow-style: none;  
+  /* For Firefox */
+  scrollbar-width: none;
+}
+
+.hide-scrollbar-css::-webkit-scrollbar {
+  /* For Chrome, Safari, and Opera */
+  display: none;
+}
