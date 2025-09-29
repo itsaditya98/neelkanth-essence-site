@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import neelKanthBird from "@/assets/nkt-logo.svg";
+import neelKanthLogo from "@/assets/nkt-logo.svg"; // Renamed import for clarity
 import { Menu, X } from "lucide-react";
 
 const Navigation = () => {
@@ -8,7 +8,8 @@ const Navigation = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      // Use a smaller scroll threshold for a faster transition
+      setIsScrolled(window.scrollY > 20); 
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -29,23 +30,32 @@ const Navigation = () => {
     }
     setIsMobileMenuOpen(false);
   };
+  
+  // Determine text color based on scroll state
+  const textColor = isScrolled ? 'text-gray-800' : 'text-white';
+  const hoverColor = isScrolled ? 'hover:text-sky-600' : 'hover:text-sky-400';
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-smooth ${
-      isScrolled ? 'bg-background/95 backdrop-blur-sm shadow-primary' : 'bg-transparent'
+      isScrolled 
+        ? 'bg-white/95 backdrop-blur-sm shadow-md' // White background when scrolled for clear contrast
+        : 'bg-transparent' // Transparent over the blue gradient
     }`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center gap-3">
              <img 
-              src={neelKanthBird} 
-              alt="Neel Kanth Traders" 
-              className="w-12 h-12 object-cover rounded-full"
-            />
-            <div>
-              <div className="font-bold text-lg text-foreground">Neel Kanth Traders</div>
-            </div>
+               src={neelKanthLogo} 
+               alt="Neel Kanth Traders Logo" 
+               // Logo size remains clean and constant
+               className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
+             />
+             {/*
+             <div>
+               <div className={`font-bold text-lg ${textColor}`}>Neel Kanth Traders</div>
+             </div>
+             */}
           </div>
 
           {/* Desktop Navigation */}
@@ -54,7 +64,7 @@ const Navigation = () => {
               <button
                 key={link.href}
                 onClick={() => scrollToSection(link.href)}
-                className="text-foreground hover:text-primary transition-smooth font-medium"
+                className={`${textColor} ${hoverColor} transition-smooth font-medium`}
               >
                 {link.label}
               </button>
@@ -64,7 +74,7 @@ const Navigation = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-foreground hover:text-primary transition-smooth"
+            className={`md:hidden ${textColor} ${hoverColor} transition-smooth`}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -72,13 +82,13 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-background/95 backdrop-blur-sm border-t border-border animate-fade-in">
+          <div className="md:hidden bg-white shadow-lg animate-fade-in absolute w-full left-0 border-t">
             <div className="py-4 space-y-2">
               {navLinks.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => scrollToSection(link.href)}
-                  className="block w-full text-left px-4 py-2 text-foreground hover:text-primary hover:bg-muted/50 rounded-lg transition-smooth font-medium"
+                  className="block w-full text-left px-4 py-2 text-gray-800 hover:text-sky-600 hover:bg-gray-100 rounded-lg transition-smooth font-medium"
                 >
                   {link.label}
                 </button>

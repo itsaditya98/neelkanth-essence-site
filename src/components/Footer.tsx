@@ -1,4 +1,4 @@
-import neelKanthBird from "@/assets/neel-kanth-bird.png";
+import neelKanthBird from "@/assets/nkt-logo.svg";
 import { Building, Phone, Mail, MapPin, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 
 const Footer = () => {
