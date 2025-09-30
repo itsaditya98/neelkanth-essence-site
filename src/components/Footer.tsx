@@ -102,7 +102,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="border-t border-white/20 mt-8 pt-8 text-center text-white/60">
-          <p>&copy; 2024 Neel Kanth Traders. All rights reserved. | Powered by nestrix.</p>
+          <p>&copy; 2024 Neel Kanth Traders. All rights reserved. | Powered by www.nestrix.synergize.co</p>
         </div>
       </div>
     </footer>

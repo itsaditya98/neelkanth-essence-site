@@ -188,13 +188,13 @@ const ProductsSection = () => {
                       </div>
                       <div className="p-4">
                         <h4 className="text-lg font-semibold mb-2">{product.name}</h4>
-                        <button
+                        <a href="#contact"
                           className="w-full bg-primary text-white py-2 rounded-lg font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition"
                           aria-label={`Get quote for ${product.name}`}
                         >
                           <ShoppingCart className="w-4 h-4" />
                           Get Quote
-                        </button>
+                        </a>
                       </div>
                     </article>
                   ))}

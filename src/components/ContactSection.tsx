@@ -111,7 +111,7 @@ const ContactSection = () => {
             </div>
           </div>
 
-          {/* Inquiry Form */}
+          {/* Inquiry Form 
           <div className="animate-scale-in">
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
               <h3 className="text-2xl font-bold text-white mb-6">Send Inquiry</h3>
@@ -169,9 +169,9 @@ const ContactSection = () => {
                   <Send className="w-5 h-5" />
                   Send Inquiry
                 </button>
-              </form>
+              </form> 
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
