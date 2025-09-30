@@ -5,6 +5,7 @@ import ServicesSection from "../components/ServicesSection";
 import AboutSection from "../components/AboutSection";
 import ContactSection from "../components/ContactSection";
 import Footer from "../components/Footer";
+import BackToTop from "../components/BackToTop";
 import { useEffect } from "react";
 
 const Index = () => {
@@ -40,7 +41,8 @@ const Index = () => {
         <AboutSection />
         <ContactSection />
       </main>
-      <Footer />
+      <Footer />     
+      <BackToTop />
     </>
   );
 };

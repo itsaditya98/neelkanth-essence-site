@@ -1,6 +1,6 @@
 import { Building, Award, Truck } from "lucide-react";
 import nktLogoMain from "@/assets/nkt-logo.svg";
-import nktLogoBackground from "@/assets/nkt-logo-bg-transparent.png"; // use the full background logo
+import nktLogoBackground from "@/assets/nkt-hero-bg.png"; // use the full background logo
 
 const HeroSection = () => {
   return (
@@ -13,7 +13,7 @@ const HeroSection = () => {
         <img
           src={nktLogoBackground}
           alt="Neel Kanth Traders Background Logo"
-          className="w-full h-full object-cover opacity-700 lg:opacity-700"
+          className="w-full h-full object-cover opacity-70 lg:opacity-70"
         />
       </div>
 
