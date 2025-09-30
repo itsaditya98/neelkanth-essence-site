@@ -4,16 +4,6 @@ import { Truck, Clock, Shield, Phone, MapPin, Users } from "lucide-react";
 const ServicesSection = () => {
   const services = [
     {
-      icon: Truck,
-      title: "Fast Delivery",
-      description: "Quick and reliable delivery across the region with our partner network"
-    },
-    {
-      icon: Clock,
-      title: "24/7 Support", 
-      description: "Round-the-clock customer support for all your construction needs"
-    },
-    {
       icon: Shield,
       title: "Quality Assurance",
       description: "All products come with genuine quality certificates and warranties"
@@ -74,18 +64,18 @@ const ServicesSection = () => {
         <div className="bg-primary/5 rounded-2xl p-8 animate-scale-in">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold text-foreground mb-2">Delivery Partners</h3>
-            <p className="text-muted-foreground">We work with trusted logistics partners to ensure timely delivery</p>
+            <p className="text-muted-foreground">We work with trusted logistics partners to ensure timely and safe delivery</p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-6">
             <div className="flex items-center gap-4 bg-card p-4 rounded-lg">
               <MapPin className="w-8 h-8 text-secondary" />
               <div>
-                <h4 className="font-semibold text-card-foreground">Pan-India Coverage</h4>
-                <p className="text-sm text-muted-foreground">Delivery across all major cities</p>
+                <h4 className="font-semibold text-card-foreground">Our Coverage</h4>
+                <p className="text-sm text-muted-foreground">We curently deliver across the gautam budh nagar and ghaziabad regions</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 bg-card p-4 rounded-lg">
+            {/* <div className="flex items-center gap-4 bg-card p-4 rounded-lg">
               <Clock className="w-8 h-8 text-accent" />
               <div>
                 <h4 className="font-semibold text-card-foreground">Same Day Delivery</h4>
@@ -98,7 +88,7 @@ const ServicesSection = () => {
                 <h4 className="font-semibold text-card-foreground">Insured Transit</h4>
                 <p className="text-sm text-muted-foreground">Full protection coverage</p>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
