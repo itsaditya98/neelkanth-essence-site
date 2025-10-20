@@ -17,19 +17,104 @@ import buildingImg from "@/assets/cement-varieties.jpg";
 
 // Data
 const categories = [
-  { id: 1, name: "Cement", products: [{ name: "PPC Cement", image: cementImg }, { name: "OPC Cement", image: cementImg }, { name: "Premium Cement", image: cementImg }] },
-  { id: 2, name: "Steel", products: [{ name: "Tata", image: steelImg }, { name: "Jindal", image: steelImg }, { name: "Sail", image: steelImg }, { name: "Steelmax", image: steelImg }, { name: "Amba Shakti", image: steelImg }] },
-  { id: 3, name: "Building Materials", products: [{ name: "Sand", image: buildingImg }, { name: "Bricks", image: buildingImg }, { name: "Gravel", image: buildingImg }] },
-  { id: 4, name: "ACC Block", products: [{ name: "Magic Crete", image: blockImg }, { name: "Buildcrete", image: blockImg }, { name: "Shree Cement ACC Block", image: blockImg }] },
-  { id: 5, name: "Waterproofing", products: [{ name: "Ultratech", image: waterproofImg }, { name: "Pidilite", image: waterproofImg }, { name: "Fosroc", image: waterproofImg }, { name: "Birla", image: waterproofImg }] },
-  { id: 6, name: "Drymix", products: [{ name: "Ultratech", image: drymixImg }, { name: "Laticrete", image: drymixImg }] },
-  { id: 7, name: "PVC", products: [{ name: "Astral", image: pvcImg }, { name: "Supreme", image: pvcImg }] },
-  { id: 8, name: "Sanitary", products: [{ name: "Birla Pivot", image: sanitaryImg }, { name: "Cera", image: sanitaryImg }, { name: "Jaguar", image: sanitaryImg }, { name: "Hindware", image: sanitaryImg }] },
-  { id: 9, name: "Electricals", products: [{ name: "Havells", image: electricalImg }, { name: "VGuard", image: electricalImg }, { name: "Ladure", image: electricalImg }] },
-  { id: 10, name: "Paint", products: [{ name: "Birla Opus", image: paintImg }] },
-  { id: 11, name: "Tiles", products: [{ name: "Birla Pivot Tiles", image: tilesImg }] },
-  { id: 12, name: "Plywood", products: [{ name: "Birla Pivot Ply", image: plywoodImg }] },
+  {
+    id: 1,
+    name: "Cement",
+    products: [
+      { name: "PPC Cement", image: "./images/ppc.avif" },
+      { name: "OPC Cement", image: "./images/opc.png" },
+      { name: "Premium Cement", image: "./images/premium.avif" },
+    ],
+  },
+  {
+    id: 2,
+    name: "Steel",
+    products: [
+      { name: "Tata", image: "./images/tata-steel.png" },
+      { name: "Jindal", image: "./images/jindal.png" },
+      { name: "Sail", image: "./images/sail.jpeg" },
+      { name: "Steelmax", image: "./images/steelmax.jpeg" },
+      { name: "Amba Shakti", image: "./images/ambashakti.jpeg" },
+    ],
+  },
+  {
+    id: 3,
+    name: "Building Materials",
+    products: [
+      { name: "Sand", image: "./images/sand.jpg" },
+      { name: "Bricks", image: "./images/bricks.jpg" },
+      { name: "Gravel", image: "./images/gravel.webp" },
+    ],
+  },
+  {
+    id: 4,
+    name: "ACC Block",
+    products: [
+      { name: "Magic Crete", image: "./images/magic.jpg" },
+      { name: "Shree Cement ACC Block", image: "./images/shree-block.jpg" },
+    ],
+  },
+  {
+    id: 5,
+    name: "Waterproofing",
+    products: [
+      { name: "Ultratech", image: "./images/ultratech-weather-pro.webp" },
+      { name: "Pidilite", image: "./images/pidlite.jpg" },
+      { name: "Fosroc", image: "./images/forsoc.jpg" },
+      { name: "Birla", image: "./images/birla-waterproof.jpg" },
+    ],
+  },
+  {
+    id: 6,
+    name: "Drymix",
+    products: [
+      { name: "Ultratech", image: "./images/ultratech-drymix.webp" },
+      { name: "Laticrete", image: "./images/laticrete.jpg" },
+    ],
+  },
+  {
+    id: 7,
+    name: "PVC",
+    products: [
+      { name: "Astral", image: "./images/astral.png" },
+      { name: "Supreme", image: "./images/supreme.jpg" },
+    ],
+  },
+  {
+    id: 8,
+    name: "Sanitary",
+    products: [
+      { name: "Birla Pivot", image: "./images/pivot.png" },
+      { name: "Cera", image: "./images/cera.jpg" },
+      { name: "Jaguar", image: "./images/jaguar.webp" },
+      { name: "Hindware", image: "./images/hindware.jpg" },
+    ],
+  },
+  {
+    id: 9,
+    name: "Electricals",
+    products: [
+      { name: "Havells", image: "./images/havells.webp" },
+      { name: "VGuard", image: "./images/vguard.png" },
+    ],
+  },
+  {
+    id: 10,
+    name: "Paint",
+    products: [{ name: "Birla Opus", image: "./images/opus-paint.jpg" }],
+  },
+  {
+    id: 11,
+    name: "Tiles",
+    products: [{ name: "Birla Pivot Tiles", image: "./images/tiles.jpg" }],
+  },
+  {
+    id: 12,
+    name: "Plywood",
+    products: [{ name: "Birla Pivot Ply", image: "./images/ply.jpg" }],
+  },
 ];
+
 
 const ProductsSection = () => {
   const [visibleCount, setVisibleCount] = useState(5);
