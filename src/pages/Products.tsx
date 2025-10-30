@@ -3,102 +3,144 @@ import Footer from "../components/layouts/Footer";
 import { useState, useRef, useEffect } from "react";
 import { ShoppingCart, Package, ChevronLeft, ChevronRight } from "lucide-react";
 
+// ✅ Import all images from src/assets/images
+import ppcImg from "@/assets/images/ppc.avif";
+import opcImg from "@/assets/images/opc.png";
+import premiumImg from "@/assets/images/premium.avif";
+
+import tataSteel from "@/assets/images/tata-steel.png";
+import jindalSteel from "@/assets/images/jindal.png";
+import sailSteel from "@/assets/images/sail.jpeg";
+import steelmax from "@/assets/images/steelmax.jpeg";
+import ambaShakti from "@/assets/images/ambashakti.jpeg";
+
+import sandImg from "@/assets/images/sand.jpg";
+import bricksImg from "@/assets/images/bricks.jpg";
+import gravelImg from "@/assets/images/gravel.webp";
+
+import magicCrete from "@/assets/images/magic.jpg";
+import shreeBlock from "@/assets/images/shree-block.jpg";
+
+import ultratechWP from "@/assets/images/ultratech-weather-pro.webp";
+import pidilite from "@/assets/images/pidlite.jpg";
+import fosroc from "@/assets/images/forsoc.jpg";
+import birlaWP from "@/assets/images/birla-waterproof.jpg";
+
+import ultratechDrymix from "@/assets/images/ultratech-drymix.webp";
+import laticrete from "@/assets/images/laticrete.jpg";
+
+import astral from "@/assets/images/astral.png";
+import supreme from "@/assets/images/supreme.jpg";
+
+import birlaPivot from "@/assets/images/pivot.png";
+import cera from "@/assets/images/cera.jpg";
+import jaguar from "@/assets/images/jaguar.webp";
+import hindware from "@/assets/images/hindware.jpg";
+
+import havells from "@/assets/images/havells.webp";
+import vguard from "@/assets/images/vguard.png";
+
+import birlaOpus from "@/assets/images/opus-paint.jpg";
+import birlaTiles from "@/assets/images/tiles.jpg";
+import birlaPly from "@/assets/images/ply.jpg";
+
+// ✅ Category + product data
 const categories = [
   {
     id: 1,
     name: "Cement",
     products: [
-      { name: "PPC Cement", image: "/images/ppc.avif" },
-      { name: "OPC Cement", image: "/images/opc.png" },
-      { name: "Premium Cement", image: "/images/premium.avif" },
+      { name: "PPC Cement", image: ppcImg },
+      { name: "OPC Cement", image: opcImg },
+      { name: "Premium Cement", image: premiumImg },
     ],
   },
   {
     id: 2,
     name: "Steel",
     products: [
-      { name: "Tata", image: "/images/tata-steel.png" },
-      { name: "Jindal", image: "/images/jindal.png" },
-      { name: "Sail", image: "/images/sail.jpeg" },
-      { name: "Steelmax", image: "/images/steelmax.jpeg" },
-      { name: "Amba Shakti", image: "/images/ambashakti.jpeg" },
+      { name: "Tata", image: tataSteel },
+      { name: "Jindal", image: jindalSteel },
+      { name: "Sail", image: sailSteel },
+      { name: "Steelmax", image: steelmax },
+      { name: "Amba Shakti", image: ambaShakti },
     ],
   },
   {
     id: 3,
     name: "Building Materials",
     products: [
-      { name: "Sand", image: "/images/sand.jpg" },
-      { name: "Bricks", image: "/images/bricks.jpg" },
-      { name: "Gravel", image: "/images/gravel.webp" },
+      { name: "Sand", image: sandImg },
+      { name: "Bricks", image: bricksImg },
+      { name: "Gravel", image: gravelImg },
     ],
   },
   {
     id: 4,
     name: "ACC Block",
     products: [
-      { name: "Magic Crete", image: "/images/magic.jpg" },
-      { name: "Shree Cement ACC Block", image: "/images/shree-block.jpg" },
+      { name: "Magic Crete", image: magicCrete },
+      { name: "Shree Cement ACC Block", image: shreeBlock },
     ],
   },
   {
     id: 5,
     name: "Waterproofing",
     products: [
-      { name: "Ultratech", image: "/images/ultratech-weather-pro.webp" },
-      { name: "Pidilite", image: "/images/pidlite.jpg" },
-      { name: "Fosroc", image: "/images/forsoc.jpg" },
-      { name: "Birla", image: "/images/birla-waterproof.jpg" },
+      { name: "Ultratech", image: ultratechWP },
+      { name: "Pidilite", image: pidilite },
+      { name: "Fosroc", image: fosroc },
+      { name: "Birla", image: birlaWP },
     ],
   },
   {
     id: 6,
     name: "Drymix",
     products: [
-      { name: "Ultratech", image: "/images/ultratech-drymix.webp" },
-      { name: "Laticrete", image: "/images/laticrete.jpg" },
+      { name: "Ultratech", image: ultratechDrymix },
+      { name: "Laticrete", image: laticrete },
     ],
   },
   {
     id: 7,
     name: "PVC",
     products: [
-      { name: "Astral", image: "/images/astral.png" },
-      { name: "Supreme", image: "/images/supreme.jpg" },
+      { name: "Astral", image: astral },
+      { name: "Supreme", image: supreme },
     ],
   },
   {
     id: 8,
     name: "Sanitary",
     products: [
-      { name: "Birla Pivot", image: "/images/pivot.png" },
-      { name: "Cera", image: "/images/cera.jpg" },
-      { name: "Jaguar", image: "/images/jaguar.webp" },
-      { name: "Hindware", image: "/images/hindware.jpg" },
+      { name: "Birla Pivot", image: birlaPivot },
+      { name: "Cera", image: cera },
+      { name: "Jaguar", image: jaguar },
+      { name: "Hindware", image: hindware },
     ],
   },
   {
     id: 9,
     name: "Electricals",
     products: [
-      { name: "Havells", image: "/images/havells.webp" },
-      { name: "VGuard", image: "/images/vguard.png" },
+      { name: "Havells", image: havells },
+      { name: "VGuard", image: vguard },
     ],
   },
   {
     id: 10,
     name: "Paint",
-    products: [{ name: "Birla Opus", image: "/images/opus-paint.jpg" }],
+    products: [{ name: "Birla Opus", image: birlaOpus }],
   },
   {
     id: 11,
     name: "Tiles",
-    products: [{ name: "Birla Pivot Tiles", image: "/images/tiles.jpg" }],
+    products: [{ name: "Birla Pivot Tiles", image: birlaTiles }],
   },
   {
     id: 12,
     name: "Plywood",
-    products: [{ name: "Birla Pivot Ply", image: "/images/ply.jpg" }],
+    products: [{ name: "Birla Pivot Ply", image: birlaPly }],
   },
 ];
 
@@ -169,18 +211,18 @@ const Products = () => {
       <Navigation />
 
       <div className="min-h-screen bg-muted/20">
-        {/* ✅ Hero Section (Your current gradient style) */}
+        {/* ✅ Hero Section */}
         <section className="relative bg-gradient-to-br from-primary/90 to-primary text-white py-24 text-center">
-        <div className="container mx-auto px-4">
-          <h1 className="text-5xl font-bold mb-4">Our Construction Materials</h1>
-          <p className="text-lg opacity-90 max-w-2xl mx-auto">
-            Explore our wide range of construction materials — cement, steel,
-            blocks, waterproofing, and drymix solutions.
-          </p>
-        </div>
+          <div className="container mx-auto px-4">
+            <h1 className="text-5xl font-bold mb-4">Our Construction Materials</h1>
+            <p className="text-lg opacity-90 max-w-2xl mx-auto">
+              Explore our wide range of construction materials — cement, steel,
+              blocks, waterproofing, and drymix solutions.
+            </p>
+          </div>
         </section>
 
-        {/* Full Products Section */}
+        {/* ✅ Products Section */}
         <section
           id="products"
           ref={sectionRef}
@@ -276,7 +318,7 @@ const Products = () => {
               ))}
             </div>
 
-            {/* Show More Button */}
+            {/* Load More / Show Less */}
             <div className="text-center mt-12">
               <button
                 className="bg-gradient-primary text-white px-8 py-3 rounded-lg font-semibold hover:scale-[1.03] transition-transform duration-300"

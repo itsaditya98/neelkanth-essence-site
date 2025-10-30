@@ -2,6 +2,48 @@ import { useEffect, useRef } from "react";
 import { Package } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
+// ✅ Import images from src/assets/images
+import ppcImg from "@/assets/images/ppc.avif";
+import opcImg from "@/assets/images/opc.png";
+import premiumImg from "@/assets/images/premium.avif";
+
+import tataSteel from "@/assets/images/tata-steel.png";
+import jindalSteel from "@/assets/images/jindal.png";
+import sailSteel from "@/assets/images/sail.jpeg";
+import steelmax from "@/assets/images/steelmax.jpeg";
+import ambaShakti from "@/assets/images/ambashakti.jpeg";
+
+import sandImg from "@/assets/images/sand.jpg";
+import bricksImg from "@/assets/images/bricks.jpg";
+import gravelImg from "@/assets/images/gravel.webp";
+
+import magicCrete from "@/assets/images/magic.jpg";
+import shreeBlock from "@/assets/images/shree-block.jpg";
+
+import ultratechWP from "@/assets/images/ultratech-weather-pro.webp";
+import pidilite from "@/assets/images/pidlite.jpg";
+import fosroc from "@/assets/images/forsoc.jpg";
+import birlaWP from "@/assets/images/birla-waterproof.jpg";
+
+import ultratechDrymix from "@/assets/images/ultratech-drymix.webp";
+import laticrete from "@/assets/images/laticrete.jpg";
+
+import astral from "@/assets/images/astral.png";
+import supreme from "@/assets/images/supreme.jpg";
+
+import birlaPivot from "@/assets/images/pivot.png";
+import cera from "@/assets/images/cera.jpg";
+import jaguar from "@/assets/images/jaguar.webp";
+import hindware from "@/assets/images/hindware.jpg";
+
+import havells from "@/assets/images/havells.webp";
+import vguard from "@/assets/images/vguard.png";
+
+import birlaOpus from "@/assets/images/opus-paint.jpg";
+import birlaTiles from "@/assets/images/tiles.jpg";
+import birlaPly from "@/assets/images/ply.jpg";
+
+// ✅ Categories for display
 const categories = [
   "Cement",
   "Steel",
@@ -17,50 +59,51 @@ const categories = [
   "Plywood",
 ];
 
+// ✅ Product images for auto-scroll
 const productImages = [
-  "./images/ppc.avif",
-  "./images/opc.png",
-  "./images/premium.avif",
-  "./images/tata-steel.png",
-  "./images/jindal.png",
-  "./images/sail.jpeg",
-  "./images/steelmax.jpeg",
-  "./images/ambashakti.jpeg",
-  "./images/sand.jpg",
-  "./images/bricks.jpg",
-  "./images/gravel.webp",
-  "./images/magic.jpg",
-  "./images/shree-block.jpg",
-  "./images/ultratech-weather-pro.webp",
-  "./images/pidlite.jpg",
-  "./images/forsoc.jpg",
-  "./images/birla-waterproof.jpg",
-  "./images/ultratech-drymix.webp",
-  "./images/laticrete.jpg",
-  "./images/astral.png",
-  "./images/supreme.jpg",
-  "./images/pivot.png",
-  "./images/cera.jpg",
-  "./images/jaguar.webp",
-  "./images/hindware.jpg",
-  "./images/havells.webp",
-  "./images/vguard.png",
-  "./images/opus-paint.jpg",
-  "./images/tiles.jpg",
-  "./images/ply.jpg",
+  ppcImg,
+  opcImg,
+  premiumImg,
+  tataSteel,
+  jindalSteel,
+  sailSteel,
+  steelmax,
+  ambaShakti,
+  sandImg,
+  bricksImg,
+  gravelImg,
+  magicCrete,
+  shreeBlock,
+  ultratechWP,
+  pidilite,
+  fosroc,
+  birlaWP,
+  ultratechDrymix,
+  laticrete,
+  astral,
+  supreme,
+  birlaPivot,
+  cera,
+  jaguar,
+  hindware,
+  havells,
+  vguard,
+  birlaOpus,
+  birlaTiles,
+  birlaPly,
 ];
 
 const ProductsSection = () => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const navigate = useNavigate();
 
-  // Continuous auto-scroll effect for product images
+  // ✅ Continuous auto-scroll animation
   useEffect(() => {
     const container = scrollRef.current;
     if (!container) return;
 
     let scrollPos = 0;
-    const scrollSpeed = 0.8; // adjust speed (pixels/frame)
+    const scrollSpeed = 0.8;
     let animationFrameId: number;
 
     const scroll = () => {
@@ -94,9 +137,11 @@ const ProductsSection = () => {
           {categories.map((cat, i) => (
             <div
               key={i}
+              onClick={() => navigate("/products")}
               className="bg-white border border-gray-200 rounded-lg p-4 font-semibold 
-           text-gray-700 shadow-sm hover:shadow-xl hover:scale-105 
-           transition-all duration-300 cursor-pointer">
+                         text-gray-700 shadow-sm hover:shadow-xl hover:scale-105 
+                         transition-all duration-300 cursor-pointer"
+            >
               {cat}
             </div>
           ))}

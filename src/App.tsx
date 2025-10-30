@@ -19,7 +19,7 @@ const App = () => (
       <Toaster />
       <Sonner />
 
-      {/* 👇 Important: basename must match vite.config.ts base */}
+      {/* ✅ Important for GitHub Pages */}
       <BrowserRouter basename="/neelkanth-essence-site">
         <Routes>
           <Route path="/" element={<Index />} />
@@ -28,7 +28,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
 
-        {/* Components visible on all pages */}
+        {/* Shared UI */}
         <BackToTop />
         <ChatBot />
       </BrowserRouter>
