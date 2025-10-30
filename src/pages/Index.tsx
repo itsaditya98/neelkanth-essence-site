@@ -1,30 +1,26 @@
-import Navigation from "../components/Navigation";
-import HeroSection from "../components/HeroSection";
-import ProductsSection from "../components/ProductsSection";
-import ServicesSection from "../components/ServicesSection";
-import AboutSection from "../components/AboutSection";
-import ContactSection from "../components/ContactSection";
-import Footer from "../components/Footer";
-import BackToTop from "../components/BackToTop";
+import Navigation from "../components/layouts/Navigation";
+import HeroSection from "../components/sections/HeroSection";
+import ProductsSection from "../components/sections/ProductsSection";
+import ServicesSection from "../components/sections/ServicesSection";
+import AboutSection from "../components/sections/AboutSection";
+import ContactSection from "../components/sections/ContactSection";
+import Footer from "../components/layouts/Footer";
 import { useEffect } from "react";
 
 const Index = () => {
   useEffect(() => {
-    // Add scroll-based animations observer
+    // 👇 Adds fade-in effect on scroll
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animate-fade-in");
-          }
+          if (entry.isIntersecting) entry.target.classList.add("animate-fade-in");
         });
       },
       { threshold: 0.1 }
     );
 
-    // Observe all animate elements
-    const animateElements = document.querySelectorAll(".animate-on-scroll");
-    animateElements.forEach((el) => observer.observe(el));
+    const elements = document.querySelectorAll(".animate-on-scroll");
+    elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
   }, []);
@@ -41,8 +37,7 @@ const Index = () => {
         <AboutSection />
         <ContactSection />
       </main>
-      <Footer />     
-      <BackToTop />
+      <Footer />
     </>
   );
 };

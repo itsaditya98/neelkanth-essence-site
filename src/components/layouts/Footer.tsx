@@ -49,7 +49,6 @@ const Footer = () => {
             </h4>
             <ul className="space-y-3">
               <li><a href="#products" className="text-white/80 hover:text-accent-light transition-smooth">Products</a></li>
-              <li><a href="#services" className="text-white/80 hover:text-accent-light transition-smooth">Services</a></li>
               <li><a href="#about" className="text-white/80 hover:text-accent-light transition-smooth">About Us</a></li>
               <li><a href="#contact" className="text-white/80 hover:text-accent-light transition-smooth">Contact</a></li>
               <li><a href="#" className="text-white/80 hover:text-accent-light transition-smooth">Quality Certificates</a></li>
@@ -66,8 +65,8 @@ const Footer = () => {
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-accent-light mt-1 flex-shrink-0" />
                 <div className="text-white/80 text-sm">
-                  0 Main Noida Dadri Road Near Sutyana Bus Stop,<br />
-                  Village Habibpur Greater Noida Gautam Buddha Nagar,<br />
+                  Neel Kanth Traders, Dadri<br />
+                  Gautam Buddha Nagar,<br />
                   Uttar Pradesh, India - 201306
                 </div>
               </div>
@@ -87,7 +86,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Brand Partners */}
+        {/* Brand Partners 
         <div className="border-t border-white/20 mt-12 pt-8">
           <h4 className="text-center font-bold mb-6">Our Brand Partners</h4>
           <div className="flex justify-center items-center gap-8 text-white/60">
@@ -97,7 +96,7 @@ const Footer = () => {
             <span className="text-lg font-semibold">Ambuja</span>
             <span className="text-lg font-semibold">Dr. Fixit</span>
           </div>
-        </div>
+        </div> */}
 
         {/* Copyright */}
         <div className="border-t border-white/20 mt-8 pt-8 text-center text-white/60">
