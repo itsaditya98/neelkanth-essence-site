@@ -82,21 +82,9 @@ const HeroSection = () => {
                 <div className="grid grid-cols-2 gap-4 text-center">
                   <div>
                     <div className="text-3xl font-bold text-accent-light">
-                      500+
+                      15+
                     </div>
-                    <div className="text-white/90 text-sm">Happy Clients</div>
-                  </div>
-                  <div>
-                    <div className="text-3xl font-bold text-accent-light">
-                      50+
-                    </div>
-                    <div className="text-white/90 text-sm">Products</div>
-                  </div>
-                  <div>
-                    <div className="text-3xl font-bold text-accent-light">
-                      100%
-                    </div>
-                    <div className="text-white/90 text-sm">Quality</div>
+                    <div className="text-white/90 text-sm">Years</div>
                   </div>
                 </div>
               </div>

@@ -65,8 +65,8 @@ const ContactSection = () => {
                 <div className="text-white">
                   <h4 className="font-semibold mb-1">Address</h4>
                   <p className="text-primary-foreground/80">
-                    0 Main Noida Dadri Road Near Sutyana Bus Stop,<br />
-                    Village Habibpur Greater Noida Gautam Buddha Nagar,<br />
+                    Neel Kanth Traders, Dadri,<br />
+                    Gautam Buddha Nagar,<br />
                     Uttar Pradesh, India - 201306
                   </p>
                 </div>
