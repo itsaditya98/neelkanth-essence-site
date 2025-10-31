@@ -118,6 +118,11 @@ const ProductsSection = () => {
     return () => cancelAnimationFrame(animationFrameId);
   }, []);
 
+  // ✅ Navigate to specific category on Products page
+  const goToCategory = (category: string) => {
+    navigate(`/products?category=${encodeURIComponent(category)}`);
+  };
+
   return (
     <section id="products" className="section-padding bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -137,7 +142,7 @@ const ProductsSection = () => {
           {categories.map((cat, i) => (
             <div
               key={i}
-              onClick={() => navigate("/products")}
+              onClick={() => goToCategory(cat)}
               className="bg-white border border-gray-200 rounded-lg p-4 font-semibold 
                          text-gray-700 shadow-sm hover:shadow-xl hover:scale-105 
                          transition-all duration-300 cursor-pointer"
@@ -154,7 +159,7 @@ const ProductsSection = () => {
             className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold 
                        hover:bg-blue-700 hover:scale-[1.03] transition-transform duration-300"
           >
-            Explore Construction Materials
+            Explore All Construction Materials
           </button>
         </div>
 

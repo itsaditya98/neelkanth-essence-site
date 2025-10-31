@@ -8,7 +8,7 @@ const AboutSection = () => {
     { icon: Users, number: "500+", label: "Happy Clients" },
     { icon: Building2, number: "50+", label: "Product Lines" },
     { icon: Award, number: "14", label: "Years Experience" },
-    { icon: Calendar, number: "24/7", label: "Support" },
+    
   ];
 
   return (
@@ -30,7 +30,7 @@ const AboutSection = () => {
         </div>
 
         {/* Stats */}
-        <div className="grid md:grid-cols-4 gap-6 mb-12">
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
             return (

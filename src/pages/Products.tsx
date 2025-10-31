@@ -1,6 +1,7 @@
 import Navigation from "../components/layouts/Navigation";
 import Footer from "../components/layouts/Footer";
-import { useState, useRef, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { ShoppingCart, Package, ChevronLeft, ChevronRight } from "lucide-react";
 
 // ✅ Import all images from src/assets/images
@@ -145,44 +146,45 @@ const categories = [
 ];
 
 const Products = () => {
-  const [visibleCount, setVisibleCount] = useState(5);
-  const sectionRef = useRef<HTMLDivElement | null>(null);
-  const [scrollStates, setScrollStates] = useState<
-    Record<number, { left: boolean; right: boolean }>
-  >({});
+  const location = useLocation();
+  const [scrollStates, setScrollStates] = useState<Record<number, { left: boolean; right: boolean }>>({});
 
-  const visibleCategories = categories.slice(0, visibleCount);
+  // ✅ Scroll to category if navigated with query param
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const category = params.get("category");
+    if (category) {
+      const el = document.getElementById(category);
+      if (el) {
+        setTimeout(() => el.scrollIntoView({ behavior: "smooth", block: "start" }), 400);
+      }
+    }
+  }, [location]);
 
-  // Scroll helper
+  // ✅ Horizontal scroll logic
   const scrollByAmount = (id: number, direction: "left" | "right") => {
     const container = document.getElementById(`scroll-container-${id}`);
     if (!container) return;
-    const cardElement = container.querySelector("article");
-    const cardWidth = cardElement ? cardElement.getBoundingClientRect().width : 300;
+    const card = container.querySelector("article");
+    const cardWidth = card ? card.getBoundingClientRect().width : 300;
     const gap = 24;
-    const scrollAmount =
-      direction === "left" ? -(cardWidth + gap) : cardWidth + gap;
-    container.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    container.scrollBy({ left: direction === "left" ? -(cardWidth + gap) : cardWidth + gap, behavior: "smooth" });
   };
 
-  // Track arrow visibility
   const updateScrollState = (id: number) => {
     const container = document.getElementById(`scroll-container-${id}`);
     if (!container) return;
-
     setScrollStates((prev) => ({
       ...prev,
       [id]: {
         left: container.scrollLeft > 0,
-        right:
-          container.scrollLeft + container.clientWidth < container.scrollWidth,
+        right: container.scrollLeft + container.clientWidth < container.scrollWidth,
       },
     }));
   };
 
-  // Attach scroll listeners
   useEffect(() => {
-    visibleCategories.forEach((cat) => {
+    categories.forEach((cat) => {
       updateScrollState(cat.id);
       const container = document.getElementById(`scroll-container-${cat.id}`);
       if (container) {
@@ -191,20 +193,7 @@ const Products = () => {
         return () => container.removeEventListener("scroll", handler);
       }
     });
-  }, [visibleCategories]);
-
-  // Toggle load more / show less
-  const handleToggle = () => {
-    if (visibleCount >= categories.length) {
-      setVisibleCount(5);
-      sectionRef.current?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    } else {
-      setVisibleCount((prev) => Math.min(prev + 5, categories.length));
-    }
-  };
+  }, []);
 
   return (
     <>
@@ -223,19 +212,13 @@ const Products = () => {
         </section>
 
         {/* ✅ Products Section */}
-        <section
-          id="products"
-          ref={sectionRef}
-          className="section-padding bg-muted/30 py-16"
-        >
+        <section className="section-padding bg-muted/30 py-16 pb-32 overflow-visible">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
             <div className="text-center mb-12">
               <div className="flex items-center justify-center gap-2 mb-4">
                 <Package className="w-8 h-8 text-primary" />
-                <h2 className="text-4xl font-bold text-foreground">
-                  Our Products
-                </h2>
+                <h2 className="text-4xl font-bold text-foreground">Our Products</h2>
               </div>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Explore our premium categories of construction materials
@@ -244,8 +227,8 @@ const Products = () => {
 
             {/* Categories */}
             <div className="space-y-16">
-              {visibleCategories.map((category) => (
-                <div key={category.id}>
+              {categories.map((category) => (
+                <div key={category.id} id={category.name}>
                   <h3 className="sticky top-0 z-10 bg-muted/30 text-2xl font-bold text-foreground py-3">
                     {category.name}
                   </h3>
@@ -254,7 +237,6 @@ const Products = () => {
                     {/* Left Arrow */}
                     <button
                       onClick={() => scrollByAmount(category.id, "left")}
-                      aria-label={`Scroll ${category.name} left`}
                       className={`absolute -left-2 sm:-left-6 lg:-left-12 top-1/2 -translate-y-1/2 p-3 rounded-full shadow-lg z-20 transition-all ${
                         scrollStates[category.id]?.left
                           ? "opacity-100 bg-white/80 hover:bg-white"
@@ -264,11 +246,9 @@ const Products = () => {
                       <ChevronLeft className="w-6 h-6" />
                     </button>
 
-                    {/* Scrollable Container */}
+                    {/* Scroll Container */}
                     <div
                       id={`scroll-container-${category.id}`}
-                      role="region"
-                      aria-label={`${category.name} products`}
                       className="flex gap-6 overflow-x-auto pb-4 hide-scrollbar-css scroll-smooth snap-x snap-mandatory relative"
                     >
                       <div className="pointer-events-none absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-muted/30 to-transparent" />
@@ -285,13 +265,10 @@ const Products = () => {
                             />
                           </div>
                           <div className="p-4">
-                            <h4 className="text-lg font-semibold mb-2">
-                              {product.name}
-                            </h4>
+                            <h4 className="text-lg font-semibold mb-2">{product.name}</h4>
                             <a
                               href="#contact"
                               className="w-full bg-primary text-white py-2 rounded-lg font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition"
-                              aria-label={`Get quote for ${product.name}`}
                             >
                               <ShoppingCart className="w-4 h-4" />
                               Get Quote
@@ -304,7 +281,6 @@ const Products = () => {
                     {/* Right Arrow */}
                     <button
                       onClick={() => scrollByAmount(category.id, "right")}
-                      aria-label={`Scroll ${category.name} right`}
                       className={`absolute -right-2 sm:-right-6 lg:-right-12 top-1/2 -translate-y-1/2 p-3 rounded-full shadow-lg z-20 transition-all ${
                         scrollStates[category.id]?.right
                           ? "opacity-100 bg-white/80 hover:bg-white"
@@ -316,16 +292,6 @@ const Products = () => {
                   </div>
                 </div>
               ))}
-            </div>
-
-            {/* Load More / Show Less */}
-            <div className="text-center mt-12">
-              <button
-                className="bg-gradient-primary text-white px-8 py-3 rounded-lg font-semibold hover:scale-[1.03] transition-transform duration-300"
-                onClick={handleToggle}
-              >
-                {visibleCount >= categories.length ? "Show Less" : "Load More"}
-              </button>
             </div>
           </div>
         </section>

@@ -1,28 +1,39 @@
+import { useEffect, useState } from "react";
 import { Building, Award, Truck } from "lucide-react";
-import nktLogoMain from "@/assets/nkt-logo.svg";
-import nktLogoBackground from "@/assets/nkt-hero-bg.png"; // use the full background logo
+import nktLogoBackground from "@/assets/nkt-hero-bg.png";
 
 const HeroSection = () => {
+  const [overlayOpacity, setOverlayOpacity] = useState(0.5);
+
+  // 👇 On scroll, smoothly reduce overlay darkness for a lightening effect
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const maxScroll = 300; // fade within first 300px
+      const newOpacity = Math.max(0.3, 0.5 - scrollY / maxScroll / 2);
+      setOverlayOpacity(newOpacity);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section
       id="home"
-      className="min-h-screen bg-gradient-hero flex items-center relative overflow-hidden pt-20 pb-12 lg:pt-32"
-
+      className="min-h-screen flex items-center relative overflow-hidden pt-20 pb-12 lg:pt-32 bg-fixed bg-cover bg-center"
+      style={{ backgroundImage: `url(${nktLogoBackground})` }}
     >
-      {/* FULL BACKGROUND LOGO */}
-      <div className="absolute inset-0 pointer-events-none">
-        <img
-          src={nktLogoBackground}
-          alt="Neel Kanth Traders Background Logo"
-          className="w-full h-full object-cover opacity-70 lg:opacity-70"
-        />
-      </div>
+      {/* ✅ Lightened Overlay with dynamic opacity */}
+      <div
+        className="absolute inset-0 bg-gradient-to-r from-blue-900 to-blue-700 mix-blend-multiply transition-all duration-500"
+        style={{ opacity: overlayOpacity }}
+      ></div>
 
-      {/* Animated floating circles */}
+      {/* Floating Circles */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500/20 rounded-full animate-float"></div>
+        <div className="absolute top-20 left-10 w-32 h-32 bg-blue-400/25 rounded-full animate-float"></div>
         <div
-          className="absolute bottom-20 right-10 w-24 h-24 bg-blue-700/20 rounded-full animate-float"
+          className="absolute bottom-20 right-10 w-24 h-24 bg-blue-600/25 rounded-full animate-float"
           style={{ animationDelay: "1s" }}
         ></div>
       </div>
@@ -48,28 +59,21 @@ const HeroSection = () => {
                 Birla, UltraTech, and leading cement brands.
               </p>
 
-              <div className="grid grid-cols-3 gap-6 mb-8">
-                <div className="text-center hover-lift">
-                  <Building className="w-8 h-8 mx-auto mb-2 text-accent-light" />
-                  <p className="text-sm font-medium">Premium Brands</p>
-                </div>
-                <div className="text-center hover-lift">
-                  <Award className="w-8 h-8 mx-auto mb-2 text-accent-light" />
-                  <p className="text-sm font-medium">Quality Assured</p>
-                </div>
-                <div className="text-center hover-lift">
-                  <Truck className="w-8 h-8 mx-auto mb-2 text-accent-light" />
-                  <p className="text-sm font-medium">Fast Delivery</p>
-                </div>
-              </div>
+              
 
               <div className="flex gap-4">
-                <a href="#products" className="text-white/90 border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground px-8 py-3 rounded-lg font-semibold transition-smooth hover-lift">
+                <a
+                  href="#products"
+                  className="text-white/90 border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground px-8 py-3 rounded-lg font-semibold transition-smooth hover-lift"
+                >
                   View Products
                 </a>
-              <a href="#contact" className="text-white/90 border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground px-8 py-3 rounded-lg font-semibold transition-smooth hover-lift">
-                Contact Us
-            </a>
+                <a
+                  href="#contact"
+                  className="text-white/90 border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground px-8 py-3 rounded-lg font-semibold transition-smooth hover-lift"
+                >
+                  Contact Us
+                </a>
               </div>
             </div>
           </div>
@@ -78,15 +82,21 @@ const HeroSection = () => {
           <div className="relative animate-scale-in">
             <div className="relative bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
               <div className="text-center">
-                <h3 className="text-white/90 text-2xl font-bold mb-4">Trusted Since Years</h3>
-                <div className="grid grid-cols-2 gap-4 text-center">
-                  <div>
-                    <div className="text-3xl font-bold text-accent-light">
-                      15+
-                    </div>
-                    <div className="text-white/90 text-sm">Years</div>
-                  </div>
+                <h3 className="text-white/90 text-2xl font-bold mb-4">
+                  Trusted Since Years
+                </h3>
+                <div className="grid grid-cols-2 gap-6 mb-8">
+                
+                <div className="text-center hover-lift">
+                  <Award className="w-8 h-8 mx-auto mb-2 text-accent-light" />
+                  <p className="text-sm text-white/90 font-medium">Quality Assured</p>
                 </div>
+                <div className="text-center hover-lift">
+                  <Truck className="w-8 h-8 mx-auto mb-2 text-accent-light" />
+                  <p className="text-sm text-white/90 font-medium">Reliable Delivery</p>
+                </div>
+
+              </div>
               </div>
             </div>
           </div>
