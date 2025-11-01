@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom"; // ✅ removed BrowserRouter
 
 import Index from "./pages/Index";
 import About from "./pages/About";
@@ -19,19 +19,17 @@ const App = () => (
       <Toaster />
       <Sonner />
 
-      {/* ✅ Important for GitHub Pages */}
-      <BrowserRouter basename="/neelkanth-essence-site">
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/about" element={<About />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+      {/* ✅ Router now handled by HashRouter in main.tsx */}
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/about" element={<About />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
 
-        {/* Shared UI */}
-        <BackToTop />
-        <ChatBot />
-      </BrowserRouter>
+      {/* Shared UI */}
+      <BackToTop />
+      <ChatBot />
     </TooltipProvider>
   </QueryClientProvider>
 );
