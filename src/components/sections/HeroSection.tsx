@@ -44,8 +44,8 @@ const HeroSection = () => {
               </div>
 
               <p className="text-xl mb-8 text-white/90 drop-shadow-md">
-                Authorized distributor of premium construction materials from
-                Birla, UltraTech, and leading cement brands.
+                Authorized distributor of construction materials from
+                Birla, UltraTech, and leading brands.
               </p>
 
               <div className="flex gap-4">
