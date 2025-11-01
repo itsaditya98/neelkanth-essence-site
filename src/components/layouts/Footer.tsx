@@ -42,8 +42,8 @@ const Footer = () => {
             </div>
 
             <p className="text-white/80 mb-6 max-w-md">
-              Your trusted partner for premium construction materials. Authorized
-              distributor of Birla, UltraTech, and other leading cement brands.
+              Your trusted partner for construction materials. Authorized
+              distributor of Birla, UltraTech, and other leading brands.
             </p>
 
             <div className="flex gap-4">
