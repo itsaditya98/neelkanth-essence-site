@@ -201,7 +201,7 @@ const Products = () => {
 
       <div className="min-h-screen bg-muted/20">
         {/* ✅ Hero Section */}
-        <section className="relative bg-gradient-to-br from-primary/90 to-primary text-white py-24 text-center">
+        <section className="relative bg-gradient-hero from-primary/90 to-primary text-white py-24 text-center">
           <div className="container mx-auto px-4">
             <h1 className="text-5xl font-bold mb-4">Our Construction Materials</h1>
             <p className="text-lg opacity-90 max-w-2xl mx-auto">

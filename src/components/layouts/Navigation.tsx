@@ -69,10 +69,10 @@ const Navigation = () => {
               alt="Neel Kanth Traders Logo"
               className="w-10 h-10 object-contain"
             />
-            <span className={`font-bold text-lg ${textColor}`}>
+            {/* <span className={`font-bold text-lg ${textColor}`}>
               Neel Kanth Traders
-            </span>
-          </div>
+            </span> */}
+          </div> 
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-8">

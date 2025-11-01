@@ -3,19 +3,8 @@ import { Building, Award, Truck } from "lucide-react";
 import nktLogoBackground from "@/assets/nkt-hero-bg.png";
 
 const HeroSection = () => {
-  const [overlayOpacity, setOverlayOpacity] = useState(0.5);
-
-  // 👇 On scroll, smoothly reduce overlay darkness for a lightening effect
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const maxScroll = 300; // fade within first 300px
-      const newOpacity = Math.max(0.3, 0.5 - scrollY / maxScroll / 2);
-      setOverlayOpacity(newOpacity);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // 🔹 Fixed brightness value (like after scrolling a bit)
+  const overlayOpacity = 0.35;
 
   return (
     <section
@@ -23,7 +12,7 @@ const HeroSection = () => {
       className="min-h-screen flex items-center relative overflow-hidden pt-20 pb-12 lg:pt-32 bg-fixed bg-cover bg-center"
       style={{ backgroundImage: `url(${nktLogoBackground})` }}
     >
-      {/* ✅ Lightened Overlay with dynamic opacity */}
+      {/* ✅ Constant Overlay Brightness */}
       <div
         className="absolute inset-0 bg-gradient-to-r from-blue-900 to-blue-700 mix-blend-multiply transition-all duration-500"
         style={{ opacity: overlayOpacity }}
@@ -59,8 +48,6 @@ const HeroSection = () => {
                 Birla, UltraTech, and leading cement brands.
               </p>
 
-              
-
               <div className="flex gap-4">
                 <a
                   href="#products"
@@ -86,17 +73,19 @@ const HeroSection = () => {
                   Trusted Since Years
                 </h3>
                 <div className="grid grid-cols-2 gap-6 mb-8">
-                
-                <div className="text-center hover-lift">
-                  <Award className="w-8 h-8 mx-auto mb-2 text-accent-light" />
-                  <p className="text-sm text-white/90 font-medium">Quality Assured</p>
+                  <div className="text-center hover-lift">
+                    <Award className="w-8 h-8 mx-auto mb-2 text-accent-light" />
+                    <p className="text-sm text-white/90 font-medium">
+                      Quality Assured
+                    </p>
+                  </div>
+                  <div className="text-center hover-lift">
+                    <Truck className="w-8 h-8 mx-auto mb-2 text-accent-light" />
+                    <p className="text-sm text-white/90 font-medium">
+                      Reliable Delivery
+                    </p>
+                  </div>
                 </div>
-                <div className="text-center hover-lift">
-                  <Truck className="w-8 h-8 mx-auto mb-2 text-accent-light" />
-                  <p className="text-sm text-white/90 font-medium">Reliable Delivery</p>
-                </div>
-
-              </div>
               </div>
             </div>
           </div>
