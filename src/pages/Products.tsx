@@ -69,10 +69,10 @@ const categories = [
   },
   {
     id: 4,
-    name: "ACC Block",
+    name: "AAC Block",
     products: [
       { name: "Magic Crete", image: magicCrete },
-      { name: "Shree Cement ACC Block", image: shreeBlock },
+      { name: "Shree Cement AAC Block", image: shreeBlock },
     ],
   },
   {

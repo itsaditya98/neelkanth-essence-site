@@ -48,7 +48,7 @@ const categories = [
   "Cement",
   "Steel",
   "Building Materials",
-  "ACC Block",
+  "AAC Block",
   "Waterproofing",
   "Drymix",
   "PVC",
