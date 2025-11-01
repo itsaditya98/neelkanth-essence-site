@@ -14,9 +14,12 @@ const ChatBot = () => {
   const chatRef = useRef<HTMLDivElement | null>(null);
 
   // Neelkanth Color Scheme
-  const primaryBlue = "#1E40AF"; // darker blue
-  const accentBlue = "#2563EB"; // medium
-  const lightBlue = "#EFF6FF"; // light background
+  const primaryBlue = "#1E40AF";
+  const accentBlue = "#2563EB";
+  const lightBlue = "#EFF6FF";
+
+  // ✅ Define base path for GitHub Pages or subfolder deployment
+  const basePath = "/neelkanth-essence-site";
 
   useEffect(() => {
     if (chatRef.current) {
@@ -44,15 +47,19 @@ const ChatBot = () => {
       return "Please say 'Hi' or 'Hello' to begin chatting with us.";
 
     if (lower.includes("products"))
-      return `Please <a href="./products" style="color:${accentBlue}; text-decoration:underline;">click here</a> to explore our products.`;
+      return `Please <a href="${basePath}/products" style="color:${accentBlue}; text-decoration:underline;">click here</a> to explore our products.`;
+
     else if (lower.includes("locate"))
       return (
-        "📍 <b>Neelkanth Traders</b><br/>Dadri, , Gautam Budh Nagar, U.P., India -201310.<br/><br/>" 
+        "📍 <b>Neelkanth Traders</b><br/>Dadri, Gautam Budh Nagar, U.P., India -201310.<br/><br/>"
       );
+
     else if (lower.includes("inquiry") || lower.includes("price"))
       return `For any product inquiry or quotation, please call us at <a href="tel:+919876543210" style="color:${accentBlue}; text-decoration:underline;">+91 98765 43210</a>.`;
+
     else if (lower.includes("about"))
-      return `Please <a href="./about" style="color:${accentBlue}; text-decoration:underline;">click here</a> to know more about us.`;
+      return `Please <a href="${basePath}/about" style="color:${accentBlue}; text-decoration:underline;">click here</a> to know more about us.`;
+
     return "Sorry, I couldn’t understand that. Please use one of the options below.";
   };
 
