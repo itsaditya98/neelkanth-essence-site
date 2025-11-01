@@ -299,7 +299,7 @@ const Products = () => {
                               >
                                 Reach Us
                               </button>
-                              <p className="mb-4 text-sm opacity-90">to get a quote.</p>
+                              
                             </div>
                           </div>
 
