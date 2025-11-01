@@ -48,7 +48,7 @@ const ContactSection = () => {
             <h2 className="text-4xl font-bold text-white">Get In Touch</h2>
           </div>
           <p className="text-xl text-primary-foreground/90 max-w-2xl mx-auto">
-            Ready to start your construction project? Contact us for the best deals on premium construction materials.
+            Ready to start your construction project? Connect with us for the best deals on construction materials.
           </p>
         </div>
 

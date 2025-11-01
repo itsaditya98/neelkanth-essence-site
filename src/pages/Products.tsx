@@ -1,51 +1,42 @@
 import Navigation from "../components/layouts/Navigation";
 import Footer from "../components/layouts/Footer";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import { ShoppingCart, Package, ChevronLeft, ChevronRight } from "lucide-react";
+import { useLocation, useNavigate, Link } from "react-router-dom";
+import { ShoppingCart, ChevronLeft, ChevronRight, Phone } from "lucide-react";
 
-// ✅ Import all images from src/assets/images
+// ✅ Import all images
 import ppcImg from "@/assets/images/ppc.avif";
 import opcImg from "@/assets/images/opc.png";
 import premiumImg from "@/assets/images/premium.avif";
-
 import tataSteel from "@/assets/images/tata-steel.png";
 import jindalSteel from "@/assets/images/jindal.png";
 import sailSteel from "@/assets/images/sail.jpeg";
 import steelmax from "@/assets/images/steelmax.jpeg";
 import ambaShakti from "@/assets/images/ambashakti.jpeg";
-
 import sandImg from "@/assets/images/sand.jpg";
 import bricksImg from "@/assets/images/bricks.jpg";
 import gravelImg from "@/assets/images/gravel.webp";
-
 import magicCrete from "@/assets/images/magic.jpg";
 import shreeBlock from "@/assets/images/shree-block.jpg";
-
 import ultratechWP from "@/assets/images/ultratech-weather-pro.webp";
 import pidilite from "@/assets/images/pidlite.jpg";
 import fosroc from "@/assets/images/forsoc.jpg";
 import birlaWP from "@/assets/images/birla-waterproof.jpg";
-
 import ultratechDrymix from "@/assets/images/ultratech-drymix.webp";
 import laticrete from "@/assets/images/laticrete.jpg";
-
 import astral from "@/assets/images/astral.png";
 import supreme from "@/assets/images/supreme.jpg";
-
 import birlaPivot from "@/assets/images/pivot.png";
 import cera from "@/assets/images/cera.jpg";
 import jaguar from "@/assets/images/jaguar.webp";
 import hindware from "@/assets/images/hindware.jpg";
-
 import havells from "@/assets/images/havells.webp";
 import vguard from "@/assets/images/vguard.png";
-
 import birlaOpus from "@/assets/images/opus-paint.jpg";
 import birlaTiles from "@/assets/images/tiles.jpg";
 import birlaPly from "@/assets/images/ply.jpg";
 
-// ✅ Category + product data
+// ✅ Category data
 const categories = [
   {
     id: 1,
@@ -147,7 +138,9 @@ const categories = [
 
 const Products = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [scrollStates, setScrollStates] = useState<Record<number, { left: boolean; right: boolean }>>({});
+  const [flipped, setFlipped] = useState<Record<string, boolean>>({});
 
   // ✅ Scroll to category if navigated with query param
   useEffect(() => {
@@ -161,7 +154,7 @@ const Products = () => {
     }
   }, [location]);
 
-  // ✅ Horizontal scroll logic
+  // ✅ Scroll Logic
   const scrollByAmount = (id: number, direction: "left" | "right") => {
     const container = document.getElementById(`scroll-container-${id}`);
     if (!container) return;
@@ -195,6 +188,15 @@ const Products = () => {
     });
   }, []);
 
+  const handleFlip = (name: string) => {
+    setFlipped((prev) => ({ ...prev, [name]: !prev[name] }));
+  };
+
+  // ✅ New handler to navigate and scroll correctly to contact section
+  const handleReachUs = () => {
+    navigate("/#contact");
+  };
+
   return (
     <>
       <Navigation />
@@ -203,29 +205,24 @@ const Products = () => {
         {/* ✅ Hero Section */}
         <section className="relative bg-gradient-hero from-primary/90 to-primary text-white py-24 text-center">
           <div className="container mx-auto px-4">
-            <h1 className="text-5xl font-bold mb-4">Our Construction Materials</h1>
+            <h1 className="text-5xl font-bold mb-4">Construction Materials Supply</h1>
             <p className="text-lg opacity-90 max-w-2xl mx-auto">
               Explore our wide range of construction materials — cement, steel,
-              blocks, waterproofing, and drymix solutions.
+              blocks, waterproofing, drymix solutions, etc.
             </p>
           </div>
         </section>
 
-        {/* ✅ Products Section */}
+        {/* ✅ Disclaimer */}
         <section className="section-padding bg-muted/30 py-16 pb-32 overflow-visible">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Section Header */}
-            <div className="text-center mb-12">
-              <div className="flex items-center justify-center gap-2 mb-4">
-                <Package className="w-8 h-8 text-primary" />
-                <h2 className="text-4xl font-bold text-foreground">Our Products</h2>
-              </div>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Explore our premium categories of construction materials
+            <div className="flex flex-col items-center mb-10">
+              <p className="text-muted-foreground max-w-2xl text-center">
+                The brand names, logos, and images displayed are trademarks of their respective owners and are used here for illustrative and identification purposes only.
               </p>
             </div>
 
-            {/* Categories */}
+            {/* ✅ Category Listing */}
             <div className="space-y-16">
               {categories.map((category) => (
                 <div key={category.id} id={category.name}>
@@ -252,27 +249,54 @@ const Products = () => {
                       className="flex gap-6 overflow-x-auto pb-4 hide-scrollbar-css scroll-smooth snap-x snap-mandatory relative"
                     >
                       <div className="pointer-events-none absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-muted/30 to-transparent" />
+
                       {category.products.map((product, i) => (
                         <article
                           key={i}
                           className="snap-start flex-shrink-0 w-[85%] sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] bg-card rounded-xl shadow-md hover-lift overflow-hidden transition-shadow"
                         >
-                          <div className="aspect-video w-full">
-                            <img
-                              src={product.image}
-                              alt={product.name}
-                              className="w-full h-full object-cover"
-                            />
+                          {/* Flip Card */}
+                          <div
+                            className={`relative aspect-video w-full transition-transform duration-700 transform ${
+                              flipped[product.name] ? "[transform:rotateY(180deg)]" : ""
+                            }`}
+                            style={{ transformStyle: "preserve-3d" }}
+                          >
+                            {/* Front Side */}
+                            <div className="absolute inset-0 [backface-visibility:hidden]">
+                              <img
+                                src={product.image}
+                                alt={product.name}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+
+                            {/* Back Side */}
+                            <div className="absolute inset-0 bg-primary text-white flex flex-col items-center justify-center px-4 text-center rounded-lg [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                              <Phone className="w-8 h-8 mb-3" />
+                              <p className="text-lg font-medium">
+                                Call us @ <span className="font-bold">123456789</span>
+                              </p>
+                              <p className="mb-4 text-sm opacity-90">or</p>
+                              <button
+                                onClick={handleReachUs}
+                                className="bg-white text-primary font-semibold px-4 py-2 rounded-lg hover:bg-blue-50 transition"
+                              >
+                                Reach Us
+                              </button>
+                              <p className="mb-4 text-sm opacity-90">to get a quote.</p>
+                            </div>
                           </div>
-                          <div className="p-4">
+
+                          <div className="p-4 text-center">
                             <h4 className="text-lg font-semibold mb-2">{product.name}</h4>
-                            <a
-                              href="#contact"
+                            <button
+                              onClick={() => handleFlip(product.name)}
                               className="w-full bg-primary text-white py-2 rounded-lg font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition"
                             >
                               <ShoppingCart className="w-4 h-4" />
-                              Get Quote
-                            </a>
+                              {flipped[product.name] ? "Back" : "Get Quote"}
+                            </button>
                           </div>
                         </article>
                       ))}

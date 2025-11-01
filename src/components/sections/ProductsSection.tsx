@@ -130,10 +130,10 @@ const ProductsSection = () => {
         <div className="flex flex-col items-center mb-10">
           <Package className="w-8 h-8 text-primary mb-3" />
           <h2 className="text-4xl font-bold text-foreground mb-2">
-            Our Product Range
+            Product Range
           </h2>
           <p className="text-muted-foreground max-w-2xl">
-            Explore our comprehensive categories of premium construction materials
+            Explore comprehensive categories of construction materials
           </p>
         </div>
 
@@ -161,6 +161,7 @@ const ProductsSection = () => {
           >
             Explore All Construction Materials
           </button>
+          
         </div>
 
         {/* Auto-scrolling product images */}
@@ -176,6 +177,12 @@ const ProductsSection = () => {
               className="h-28 w-auto rounded-lg shadow-md object-cover hover:scale-105 hover:shadow-xl transition-transform duration-300"
             />
           ))}
+        </div>
+        <div className="flex flex-col items-center mb-10">
+         
+          <p className="text-muted-foreground max-w-2xl">
+            All brand logos and images shown are the property of their respective owners and are used here for illustrative and identification purposes only.
+          </p>
         </div>
       </div>
     </section>

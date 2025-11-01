@@ -114,10 +114,11 @@ const Footer = () => {
             </div>
           </div>
         </div>
-
+        <div className="mt-8 pt-8 text-center text-white/60 text-sm">
+          Brand images © respective owners. Used for representation only.
+        </div>
         <div className="border-t border-white/20 mt-8 pt-8 text-center text-white/60 text-sm">
-          © 2024 Neel Kanth Traders. All rights reserved. | Powered by
-          <span className="text-accent-light ml-1">www.nestrix.synergize.co</span>
+          © 2025 Neel Kanth Traders. All rights reserved. | Powered by <a href="https://www.nestrix.synergize.co/">NESTRIX</a>
         </div>
       </div>
     </footer>
