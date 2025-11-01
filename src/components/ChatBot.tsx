@@ -47,7 +47,7 @@ const ChatBot = () => {
       return `Please <a href="/neelkanth-essence-site/products" style="color:${accentBlue}; text-decoration:underline;">click here</a> to explore our products.`;
     else if (lower.includes("locate"))
       return (
-        "📍 <b>Neelkanth Traders</b><br/>Dadri, U.P., India -201310.<br/><br/>" 
+        "📍 <b>Neelkanth Traders</b><br/>Dadri, , Gautam Budh Nagar, U.P., India -201310.<br/><br/>" 
       );
     else if (lower.includes("inquiry") || lower.includes("price"))
       return `For any product inquiry or quotation, please call us at <a href="tel:+919876543210" style="color:${accentBlue}; text-decoration:underline;">+91 98765 43210</a>.`;
@@ -98,7 +98,7 @@ const ChatBot = () => {
           className="fixed bottom-40 right-6 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-gray-200 z-50 flex flex-col overflow-hidden animate-fade-in"
           style={{
             fontFamily: "Inter, sans-serif",
-            maxHeight: "70vh",
+            maxHeight: "60vh",
           }}
         >
           {/* Header */}
