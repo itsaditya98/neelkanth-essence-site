@@ -1,7 +1,7 @@
 import Navigation from "../components/layouts/Navigation";
 import Footer from "../components/layouts/Footer";
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate, Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ShoppingCart, ChevronLeft, ChevronRight, Phone } from "lucide-react";
 
 // ✅ Import all images
@@ -154,7 +154,7 @@ const Products = () => {
     }
   }, [location]);
 
-  // ✅ Scroll Logic
+  // ✅ Scroll arrows visibility logic
   const scrollByAmount = (id: number, direction: "left" | "right") => {
     const container = document.getElementById(`scroll-container-${id}`);
     if (!container) return;
@@ -188,14 +188,29 @@ const Products = () => {
     });
   }, []);
 
+  // ✅ Flip logic (only one card flips, auto resets after 5s or on scroll)
   const handleFlip = (name: string) => {
-    setFlipped((prev) => ({ ...prev, [name]: !prev[name] }));
+    setFlipped((prev) => {
+      // Reset all others, only flip this one
+      const updated = Object.keys(prev).reduce((acc, key) => ({ ...acc, [key]: false }), {});
+      updated[name] = true;
+
+      const timeout = setTimeout(() => {
+        setFlipped((prevState) => ({ ...prevState, [name]: false }));
+      }, 5000);
+
+      const flipBackHandler = () => {
+        clearTimeout(timeout);
+        setFlipped((prevState) => ({ ...prevState, [name]: false }));
+        window.removeEventListener("scroll", flipBackHandler);
+      };
+
+      window.addEventListener("scroll", flipBackHandler, { once: true });
+      return updated;
+    });
   };
 
-  // ✅ New handler to navigate and scroll correctly to contact section
-  const handleReachUs = () => {
-    navigate("/#contact");
-  };
+  const handleReachUs = () => navigate("/#contact");
 
   return (
     <>
@@ -208,7 +223,7 @@ const Products = () => {
             <h1 className="text-5xl font-bold mb-4">Construction Materials Supply</h1>
             <p className="text-lg opacity-90 max-w-2xl mx-auto">
               Explore our wide range of construction materials — cement, steel,
-              blocks, waterproofing, drymix solutions, etc.
+              blocks, waterproofing, drymix solutions, and more.
             </p>
           </div>
         </section>
@@ -295,7 +310,7 @@ const Products = () => {
                               className="w-full bg-primary text-white py-2 rounded-lg font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition"
                             >
                               <ShoppingCart className="w-4 h-4" />
-                              {flipped[product.name] ? "Back" : "Get Quote"}
+                              Get Quote
                             </button>
                           </div>
                         </article>
