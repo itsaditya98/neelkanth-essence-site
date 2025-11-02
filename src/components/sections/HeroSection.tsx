@@ -49,18 +49,26 @@ const HeroSection = () => {
               </p>
 
               <div className="flex gap-4">
-                <a
-                  href="#products"
-                  className="text-white/90 border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground px-8 py-3 rounded-lg font-semibold transition-smooth hover-lift"
-                >
-                  View Products
-                </a>
-                <a
-                  href="#contact"
-                  className="text-white/90 border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground px-8 py-3 rounded-lg font-semibold transition-smooth hover-lift"
-                >
-                  Contact Us
-                </a>
+                <a href="#products"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const section = document.querySelector("#products");
+                    if (section) {
+                    section.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
+                className="text-white/90 border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground px-8 py-3 rounded-lg font-semibold transition-smooth hover-lift"
+                >View Products</a>
+                <a href="#contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const section = document.querySelector("#contact");
+                    if (section) {
+                    section.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
+                className="text-white/90 border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground px-8 py-3 rounded-lg font-semibold transition-smooth hover-lift"
+                >Contact Us</a>
               </div>
             </div>
           </div>

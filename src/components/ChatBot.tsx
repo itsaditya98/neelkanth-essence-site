@@ -98,7 +98,7 @@ const ChatBot = () => {
           className="fixed bottom-40 right-6 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-gray-200 z-50 flex flex-col overflow-hidden animate-fade-in"
           style={{
             fontFamily: "Inter, sans-serif",
-            maxHeight: "70vh",
+            maxHeight: "60vh",
           }}
         >
           {/* Header */}
@@ -106,7 +106,7 @@ const ChatBot = () => {
             className="text-white p-3 font-semibold text-sm flex justify-between items-center"
             style={{ backgroundColor: primaryBlue }}
           >
-            <span>Neelkanth Chat Support</span>
+            <span>Neelkanth Chatbot</span>
             <button
               onClick={() => setIsOpen(false)}
               className="text-white text-lg leading-none hover:opacity-80"
