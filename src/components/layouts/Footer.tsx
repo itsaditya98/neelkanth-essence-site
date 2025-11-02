@@ -1,13 +1,22 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { Building, Phone, Mail, MapPin, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import {
+  Building,
+  Phone,
+  Mail,
+  MapPin,
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin,
+} from "lucide-react";
 import neelKanthLogo from "@/assets/nkt-logo.svg";
 
 const Footer = () => {
-
   const navigate = useNavigate();
   const location = useLocation();
 
   const handleFooterNav = (href: string) => {
+    // ✅ For in-page anchor links (#)
     if (href.startsWith("#")) {
       if (location.pathname === "/") {
         const el = document.querySelector(href);
@@ -20,6 +29,7 @@ const Footer = () => {
         }, 600);
       }
     } else {
+      // ✅ For actual route paths
       navigate(href);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -28,11 +38,15 @@ const Footer = () => {
   return (
     <footer className="bg-foreground text-white">
       <div className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-6">
-              <img src={neelKanthLogo} alt="Neel Kanth Traders" className="w-12 h-12" />
+              <img
+                src={neelKanthLogo}
+                alt="Neel Kanth Traders"
+                className="w-12 h-12"
+              />
               <div>
                 <h3 className="text-2xl font-bold">Neel Kanth Traders</h3>
                 <p className="text-accent-light text-sm">
@@ -93,6 +107,32 @@ const Footer = () => {
             </ul>
           </div>
 
+          {/* Legal */}
+          <div>
+            <h4 className="text-lg font-bold mb-6 flex items-center gap-2">
+              <Building className="w-5 h-5 text-accent-light" />
+              Legal
+            </h4>
+            <ul className="space-y-3">
+              <li>
+                <button
+                  onClick={() => handleFooterNav("/terms-of-use")} // ✅ Fixed route
+                  className="text-white/80 hover:text-accent-light transition-all"
+                >
+                  Terms of Use
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleFooterNav("/privacy-policy")} // ✅ Fixed route
+                  className="text-white/80 hover:text-accent-light transition-all"
+                >
+                  Privacy Policy
+                </button>
+              </li>
+            </ul>
+          </div>
+
           {/* Contact Info */}
           <div>
             <h4 className="text-lg font-bold mb-6 flex items-center gap-2">
@@ -102,23 +142,35 @@ const Footer = () => {
             <div className="space-y-4 text-white/80 text-sm">
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-accent-light mt-1" />
-                Neel Kanth Traders, Dadri<br />
+                Neel Kanth Traders, Dadri
+                <br />
                 Gautam Buddha Nagar, UP - 201306
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-accent-light" /> +91 1234567890
               </div>
               <div className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-accent-light" /> contact@neelkanthtraders.in
+                <Mail className="w-5 h-5 text-accent-light" />{" "}
+                contact@neelkanthtraders.in
               </div>
             </div>
           </div>
         </div>
+
         <div className="mt-8 pt-8 text-center text-white/60 text-sm">
           Brand images © respective owners. Used for representation only.
         </div>
+
         <div className="border-t border-white/20 mt-8 pt-8 text-center text-white/60 text-sm">
-          © 2025 Neel Kanth Traders. All rights reserved. | Powered by <a href="https://www.nestrix.synergize.co/">NESTRIX</a>
+          © 2025 Neel Kanth Traders. All rights reserved. | Powered by{" "}
+          <a
+            href="https://www.nestrix.synergize.co/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-accent-light"
+          >
+            NESTRIX
+          </a>
         </div>
       </div>
     </footer>

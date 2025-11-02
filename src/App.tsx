@@ -10,7 +10,8 @@ import Products from "./pages/Products";
 import NotFound from "./pages/NotFound";
 import BackToTop from "./components/BackToTop";
 import ChatBot from "./components/ChatBot";
-
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfUse from "./pages/TermsOfUse";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -25,6 +26,8 @@ const App = () => (
         <Route path="/products" element={<Products />} />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-use" element={<TermsOfUse />} />
       </Routes>
 
       {/* Shared UI */}

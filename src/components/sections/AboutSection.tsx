@@ -54,7 +54,7 @@ const AboutSection = () => {
             onClick={() => navigate("/about")}
             className="bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:scale-[1.03] transition-transform duration-300"
           >
-            Know More About Us
+            Know More
           </button>
         </div>
       </div>

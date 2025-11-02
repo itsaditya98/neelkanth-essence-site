@@ -21,7 +21,7 @@ const AboutPage = () => {
       {/* ✅ Hero Section (Your current gradient style) */}
       <section className="relative bg-gradient-hero from-primary/90 to-primary text-white py-24 text-center">
         <div className="container mx-auto px-4">
-          <h1 className="text-5xl font-bold mb-4">About Neel Kanth Traders</h1>
+          <h1 className="text-5xl font-bold mb-4">About Us</h1>
           <p className="text-lg opacity-90 max-w-2xl mx-auto">
             Over 14 years of building trust, quality, and relationships in the
             construction industry — empowering builders with reliable materials
