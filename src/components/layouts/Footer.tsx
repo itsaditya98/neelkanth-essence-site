@@ -8,6 +8,7 @@ import {
   Twitter,
   Instagram,
   Linkedin,
+  FileText,
 } from "lucide-react";
 import neelKanthLogo from "@/assets/nkt-logo.svg";
 
@@ -110,7 +111,7 @@ const Footer = () => {
           {/* Legal */}
           <div>
             <h4 className="text-lg font-bold mb-6 flex items-center gap-2">
-              <Building className="w-5 h-5 text-accent-light" />
+              <FileText className="w-5 h-5 text-accent-light" />
               Legal
             </h4>
             <ul className="space-y-3">
